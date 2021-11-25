@@ -32,7 +32,6 @@ export const startLogin = (loginFormData,loginAuth,props) => {
                     props.history.push("/")
                     const toggle = loginAuth()
                     // console.log(toggle);
-                    startAccount()
                     dispatch(startToggle(toggle))
                 }
             })
