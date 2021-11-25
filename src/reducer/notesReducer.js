@@ -3,10 +3,10 @@ const notesInitialState = []
 const notesReducer = (state = notesInitialState,action) => {
     switch(action.type){
         case 'NEW_NOTE' : {
-            return [...state,[...action.payload]]
+            return [...state,{...action.payload}]
         }
         case 'SET_NOTE' :{
-            return [...state,[...action.payload]]
+            return [...action.payload]
         }
 
         case 'REMOVE_ITEM' : {
@@ -15,12 +15,12 @@ const notesReducer = (state = notesInitialState,action) => {
                     return true;
                 }
             })
-            return{
-                ...state,...result
-            }
+            return [...state,...result]
         }
         default : {
             return [...state]
         }
     }
 }
+
+export default notesReducer

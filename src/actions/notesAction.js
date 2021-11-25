@@ -1,5 +1,7 @@
 import axios from 'axios'
+
 export const startNew = (newNote) => {
+    console.log('newNote',newNote);
     return (dispatch) => {
         axios.post('http://dct-user-auth.herokuapp.com/api/notes',newNote,{
             headers:{
@@ -8,8 +10,8 @@ export const startNew = (newNote) => {
         })
             .then((res) => {
                 const result =res.data
+                console.log('result',result);
                 dispatch(addNew(result))
-                dispatch(startListNotes(localStorage.getItem('token')))
             })
             .catch((err) => {
                 alert(err.message)
@@ -18,10 +20,10 @@ export const startNew = (newNote) => {
 }
 
 
-export const addNew = (newNote) => {
+export const addNew = (result) => {
     return {
         type : 'NEW_NOTE',
-        payload : newNote
+        payload : result
     }
 }
 
@@ -29,7 +31,7 @@ export const startListNotes = (token) => {
     return (dispatch) => {
         axios.get('http://dct-user-auth.herokuapp.com/api/notes',{
             headers:{
-                'x-auth':token
+                'x-auth':localStorage.getItem('token')
             }})
             .then((response) => {
                 const result = response.data;

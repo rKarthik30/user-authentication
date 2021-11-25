@@ -47,7 +47,7 @@ const NotesForm = (props) => {
           <input type="text" value={title} name='title' placeholder="Enter Title" onChange={handleChange}/><br/>
           {formErrors.title && <span className='text-danger'> {formErrors.title} </span>}
 
-          <textarea placeholder='Enter your Note' value={body} onChange={handleChange}></textarea> <br/>
+          <textarea placeholder='Enter your Note' value={body} name='body' onChange={handleChange}></textarea> <br/>
 
           <input type='submit' value='save'/>
       </form>

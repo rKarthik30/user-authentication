@@ -32,6 +32,7 @@ const NavBar = (props) => {
           <Link to="#" onClick={(e) => {
             e.preventDefault()
             dispatch(startLogout(props,logoutAuth))
+            localStorage.clear()
           }}>Logout</Link>
         </>
       ):(
